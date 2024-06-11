@@ -1,0 +1,10 @@
+[rhel9]
+rhel9-server1
+rhel9-server2
+rhel9-server3
+rhel9-server4
+
+[rhel8]
+rhel8-server1
+rhel8-server2
+

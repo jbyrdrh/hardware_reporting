@@ -8,7 +8,7 @@
         dest: /root/test.txt
     - name: download url as hwreport.empty and rename it to hwreport
       copy:
-        src: /home/ansible/ansible/hwreport.empty
+        src: /home/ansible/hardware_reporting/hwreport.empty
         dest: /root/hwreport.txt
     - name: replace contents in hwreport.txt
       replace:
@@ -24,7 +24,15 @@
           dest: "BIOS_VERSION={{ ansible_bios_version }}" 
         - src: CPU
           dest: "CPU={{ ansible_processor }}"
-        - src: DISK_SIZE_VDA
-          dest: "{{ ansible_devices.vda.size | default('NONE') }}"
-        - src: DISK_SIZE_VDB
-          dest: "DISK_SIZE_VDB= {{ ansible_devices.vdb.size | default('NONE') }}"
+        - src: DISK_SIZE_SDA
+          dest: "{{ ansible_devices.sda.size | default('NONE') }}"
+        - src: DISK_SIZE_SDB
+          dest: "DISK_SIZE_SDB= {{ ansible_devices.sdb.size | default('NONE') }}"
+        - src: DISK_SIZE_SDC
+          dest: "DISK_SIZE_SDC= {{ ansible_devices.sdc.size | default('NONE') }}"
+        - src: DISK_SIZE_SDD
+          dest: "DISK_SIZE_SDD= {{ ansible_devices.sdd.size | default('NONE') }}"
+        - src: DISK_SIZE_SDE
+          dest: "DISK_SIZE_SDE= {{ ansible_devices.sde.size | default('NONE') }}"
+        - src: DISK_SIZE_SDF
+          dest: "DISK_SIZE_SDF= {{ ansible_devices.sdf.size | default('NONE') }}"
