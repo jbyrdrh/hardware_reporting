@@ -77,3 +77,14 @@ One easy way to collect hardware facts is to use an ad hoc command for which the
 ~~~
 $ ansible all -m setup -a 'gather_subset=hardware' > hardware_facts.txt
 ~~~
+
+From the generated file above, you will be able to search for `ansible_devices`:
+
+~~~
+"ansible_devices": {
+            "sda": {
+                "holders": [],
+                "host": "SCSI storage controller: Red Hat, Inc. Virtio 1.0 SCSI (rev 01)",
+                "links": {
+                    "ids": [
+~~~
