@@ -96,6 +96,47 @@ From the generated file above, you will be able to search for `ansible_devices`:
                     "ids": [
 ~~~
 
+**Run the playbook**
+
+Run the playbook which should complete with no errors (as long as the disk names are accurate in `hwreport.j2`).
+
+~~~
+[ansible@controlnode hardware_reporting]$ ansible-playbook hwreport.yml 
+
+PLAY [all] ***************************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************
+ok: [rhel9-server2]
+ok: [rhel8-server1]
+ok: [rhel9-server1]
+ok: [rhel9-server3]
+ok: [rhel9-server4]
+ok: [rhel8-server2]
+
+TASK [Copy hwreport.empty to managed nodes and rename to hwreport.txt] ***************************************************************************
+changed: [rhel8-server1]
+changed: [rhel9-server1]
+changed: [rhel9-server2]
+changed: [rhel9-server3]
+changed: [rhel9-server4]
+changed: [rhel8-server2]
+
+TASK [replace contents in hwreport.txt] **********************************************************************************************************
+changed: [rhel9-server1]
+changed: [rhel9-server2]
+changed: [rhel8-server1]
+changed: [rhel9-server4]
+changed: [rhel9-server3]
+changed: [rhel8-server2]
+
+PLAY RECAP ***************************************************************************************************************************************
+rhel8-server1              : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+rhel8-server2              : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+rhel9-server1              : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+rhel9-server2              : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+rhel9-server3              : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+rhel9-server4              : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+~~~
 
 **Verification**
 
