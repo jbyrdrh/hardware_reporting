@@ -50,3 +50,19 @@ rhel8-server1
 rhel8-server2
 ~~~
 
+**Incorporating a template file: `hwreport.j2`**
+This is the template file used in this demo. As you can see, any VM is expected to have between one and five disks.
+
+~~~
+[ansible@controlnode hardware_reporting]$ cat hwreport.j2 
+INVENTORY_HOSTNAME= {{ ansible_hostname }}
+TOTAL_MEMORY= {{ ansible_memtotal_mb }}
+BIOS_VERSION= {{ ansible_bios_version }}
+CPU= {{ ansible_processor }}
+DISK_SIZE_SDA= {{ ansible_devices.sda.size | default('NONE') }}
+DISK_SIZE_SDB= {{ ansible_devices.sdb.size | default('NONE') }}
+DISK_SIZE_SDC= {{ ansible_devices.sdc.size | default('NONE') }}
+DISK_SIZE_SDD= {{ ansible_devices.sdd.size | default('NONE') }}
+DISK_SIZE_SDE= {{ ansible_devices.sde.size | default('NONE') }}
+DISK_SIZE_SDF= {{ ansible_devices.sdf.size | default('NONE') }}
+~~~
