@@ -2,11 +2,7 @@
 - hosts: all
   ignore_errors: yes
   tasks:
-    - name: Download the file http://textfiles.com/100/914bbs.txt and save it as test.txt (hwreport.empty on the exam)
-      get_url:
-        url: http://textfiles.com/100/914bbs.txt
-        dest: /root/test.txt
-    - name: download url as hwreport.empty and rename it to hwreport
+    - name: Copy hwreport.empty to managed nodes and rename to hwreport.txt
       copy:
         src: /home/ansible/hardware_reporting/hwreport.empty
         dest: /root/hwreport.txt
