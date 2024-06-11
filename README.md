@@ -35,7 +35,7 @@ become=True
 become_method=sudo
 become_user=root
 become_ask_pass=False
-~~
+~~~
 
 - The `inventory` file for this demo is as follows:
 ~~~
