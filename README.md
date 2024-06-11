@@ -81,6 +81,7 @@ $ ansible all -m setup -a 'gather_subset=hardware' > hardware_facts.txt
 From the generated file above, you will be able to search for `ansible_devices`:
 
 ~~~
+[ansible@controlnode hardware_reporting]$ less hardware_facts.txt
 "ansible_devices": {
             "sda": {  <---------
                 "holders": [],
