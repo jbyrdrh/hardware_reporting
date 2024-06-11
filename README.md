@@ -69,3 +69,11 @@ DISK_SIZE_SDD= {{ ansible_devices.sdd.size | default('NONE') }}
 DISK_SIZE_SDE= {{ ansible_devices.sde.size | default('NONE') }}
 DISK_SIZE_SDF= {{ ansible_devices.sdf.size | default('NONE') }}
 ~~~
+
+**Tips for collecting ansible_facts**
+
+One easy way to collect hardware facts is to use an ad hoc command for which the output can be redirected to a file:
+
+~~~
+$ ansible all -m setup -a 'gather_subset=hardware' > hardware_facts.txt
+~~~
