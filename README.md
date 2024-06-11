@@ -95,3 +95,78 @@ From the generated file above, you will be able to search for `ansible_devices`:
                 "links": {
                     "ids": [
 ~~~
+
+
+**Verification**
+
+After the playbook runs successfully, then you can verify `/root/hwreport.txt` was created on each managed node using an ad hoc command:
+
+~~~
+[ansible@controlnode hardware_reporting]$ ansible all -a "cat /root/hwreport.txt"
+rhel8-server1 | CHANGED | rc=0 >>
+INVENTORY_HOSTNAME= rhel8-server1
+TOTAL_MEMORY= 1690
+BIOS_VERSION= 0.0.0
+CPU= ['0', 'GenuineIntel', 'Intel Xeon Processor (Skylake, IBRS, no TSX)', '1', 'GenuineIntel', 'Intel Xeon Processor (Skylake, IBRS, no TSX)']
+DISK_SIZE_SDA= 10.00 GB
+DISK_SIZE_SDB= 20.00 GB
+DISK_SIZE_SDC= 15.00 GB
+DISK_SIZE_SDD= 5.00 GB
+DISK_SIZE_SDE= 8.00 GB
+DISK_SIZE_SDF= NONE
+rhel9-server1 | CHANGED | rc=0 >>
+INVENTORY_HOSTNAME= rhel9-server1
+TOTAL_MEMORY= 700
+BIOS_VERSION= 1.14.0-1.module+el8.4.0+8855+a9e237a9
+CPU= ['0', 'GenuineIntel', 'Intel Xeon Processor (Skylake, IBRS, no TSX)']
+DISK_SIZE_SDA= 25.00 GB
+DISK_SIZE_SDB= 15.00 GB
+DISK_SIZE_SDC= 10.00 GB
+DISK_SIZE_SDD= 15.00 GB
+DISK_SIZE_SDE= 10.00 GB
+DISK_SIZE_SDF= 20.00 GB
+rhel9-server2 | CHANGED | rc=0 >>
+INVENTORY_HOSTNAME= rhel9-server2
+TOTAL_MEMORY= 700
+BIOS_VERSION= 1.14.0-1.module+el8.4.0+8855+a9e237a9
+CPU= ['0', 'GenuineIntel', 'Intel Xeon Processor (Skylake, IBRS, no TSX)']
+DISK_SIZE_SDA= 20.00 GB
+DISK_SIZE_SDB= 15.00 GB
+DISK_SIZE_SDC= 10.00 GB
+DISK_SIZE_SDD= 10.00 GB
+DISK_SIZE_SDE= 15.00 GB
+DISK_SIZE_SDF= NONE
+rhel9-server4 | CHANGED | rc=0 >>
+INVENTORY_HOSTNAME= rhel9-server4
+TOTAL_MEMORY= 7495
+BIOS_VERSION= 1.14.0-1.module+el8.4.0+8855+a9e237a9
+CPU= ['0', 'GenuineIntel', 'Intel Xeon Processor (Skylake, IBRS, no TSX)', '1', 'GenuineIntel', 'Intel Xeon Processor (Skylake, IBRS, no TSX)']
+DISK_SIZE_SDA= 20.00 GB
+DISK_SIZE_SDB= 3.00 GB
+DISK_SIZE_SDC= 10.00 GB
+DISK_SIZE_SDD= 20.00 GB
+DISK_SIZE_SDE= 15.00 GB
+DISK_SIZE_SDF= 10.00 GB
+rhel9-server3 | CHANGED | rc=0 >>
+INVENTORY_HOSTNAME= rhel9-server3
+TOTAL_MEMORY= 15339
+BIOS_VERSION= 0.0.0
+CPU= ['0', 'GenuineIntel', 'Intel Xeon Processor (Skylake, IBRS, no TSX)', '1', 'GenuineIntel', 'Intel Xeon Processor (Skylake, IBRS, no TSX)']
+DISK_SIZE_SDA= 10.00 GB
+DISK_SIZE_SDB= 20.00 GB
+DISK_SIZE_SDC= 5.00 GB
+DISK_SIZE_SDD= 10.00 GB
+DISK_SIZE_SDE= NONE
+DISK_SIZE_SDF= NONE
+rhel8-server2 | CHANGED | rc=0 >>
+INVENTORY_HOSTNAME= rhel8-server2
+TOTAL_MEMORY= 1690
+BIOS_VERSION= 0.0.0
+CPU= ['0', 'GenuineIntel', 'Intel Xeon Processor (Skylake, IBRS, no TSX)', '1', 'GenuineIntel', 'Intel Xeon Processor (Skylake, IBRS, no TSX)']
+DISK_SIZE_SDA= 10.00 GB
+DISK_SIZE_SDB= 2.00 GB
+DISK_SIZE_SDC= 5.00 GB
+DISK_SIZE_SDD= 5.00 GB
+DISK_SIZE_SDE= NONE
+DISK_SIZE_SDF= NONE
+~~~
