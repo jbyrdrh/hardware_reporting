@@ -54,6 +54,8 @@ rhel8-server2
 
 This is the template file used in this demo. As you can see, any VM is expected to have between one and five disks.
 
+NOTE: The disk names may need to be modified per your lab environment.
+
 ~~~
 [ansible@controlnode hardware_reporting]$ cat hwreport.j2 
 INVENTORY_HOSTNAME= {{ ansible_hostname }}
