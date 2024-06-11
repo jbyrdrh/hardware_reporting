@@ -89,7 +89,7 @@ From the generated file above, you will be able to search for `ansible_devices`:
                 "links": {
                     "ids": [
 ...
-"sdb": {
+           "sdb": {   <---------
                 "holders": [],
                 "host": "SCSI storage controller: Red Hat, Inc. Virtio 1.0 SCSI (rev 01)",
                 "links": {
