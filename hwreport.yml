@@ -6,29 +6,8 @@
       copy:
         src: /home/ansible/hardware_reporting/hwreport.empty
         dest: /root/hwreport.txt
+
     - name: replace contents in hwreport.txt
-      replace:
-        regexp: "{{ item.src }}"
-        replace: "{{ item.dest }}"
+      template:
+        src: hwreport.j2
         dest: /root/hwreport.txt
-      loop:
-        - src: INVENTORY_HOSTNAME
-          dest: "INVENTORY_HOSTNAME={{ ansible_hostname }}"
-        - src: TOTAL_MEMORY
-          dest: "TOTAL_MEMORY={{ ansible_memtotal_mb }}"
-        - src: BIOS_VERSION
-          dest: "BIOS_VERSION={{ ansible_bios_version }}" 
-        - src: CPU
-          dest: "CPU={{ ansible_processor }}"
-        - src: DISK_SIZE_SDA
-          dest: "{{ ansible_devices.sda.size | default('NONE') }}"
-        - src: DISK_SIZE_SDB
-          dest: "DISK_SIZE_SDB= {{ ansible_devices.sdb.size | default('NONE') }}"
-        - src: DISK_SIZE_SDC
-          dest: "DISK_SIZE_SDC= {{ ansible_devices.sdc.size | default('NONE') }}"
-        - src: DISK_SIZE_SDD
-          dest: "DISK_SIZE_SDD= {{ ansible_devices.sdd.size | default('NONE') }}"
-        - src: DISK_SIZE_SDE
-          dest: "DISK_SIZE_SDE= {{ ansible_devices.sde.size | default('NONE') }}"
-        - src: DISK_SIZE_SDF
-          dest: "DISK_SIZE_SDF= {{ ansible_devices.sdf.size | default('NONE') }}"
