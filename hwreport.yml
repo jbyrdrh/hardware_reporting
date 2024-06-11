@@ -8,7 +8,7 @@
         dest: /root/test.txt
     - name: download url as hwreport.empty and rename it to hwreport
       copy:
-        src: /home/greg/ansible/hwreport.empty
+        src: /home/ansible/ansible/hwreport.empty
         dest: /root/hwreport.txt
     - name: replace contents in hwreport.txt
       replace:
