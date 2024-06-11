@@ -51,6 +51,7 @@ rhel8-server2
 ~~~
 
 **Incorporating a template file: `hwreport.j2`**
+
 This is the template file used in this demo. As you can see, any VM is expected to have between one and five disks.
 
 ~~~
