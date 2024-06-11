@@ -1,0 +1,30 @@
+---
+- hosts: all
+  ignore_errors: yes
+  tasks:
+    - name: Download the file http://textfiles.com/100/914bbs.txt and save it as test.txt (hwreport.empty on the exam)
+      get_url:
+        url: http://textfiles.com/100/914bbs.txt
+        dest: /root/test.txt
+    - name: download url as hwreport.empty and rename it to hwreport
+      copy:
+        src: /home/greg/ansible/hwreport.empty
+        dest: /root/hwreport.txt
+    - name: replace contents in hwreport.txt
+      replace:
+        regexp: "{{ item.src }}"
+        replace: "{{ item.dest }}"
+        dest: /root/hwreport.txt
+      loop:
+        - src: INVENTORY_HOSTNAME
+          dest: "INVENTORY_HOSTNAME={{ ansible_hostname }}"
+        - src: TOTAL_MEMORY
+          dest: "TOTAL_MEMORY={{ ansible_memtotal_mb }}"
+        - src: BIOS_VERSION
+          dest: "BIOS_VERSION={{ ansible_bios_version }}" 
+        - src: CPU
+          dest: "CPU={{ ansible_processor }}"
+        - src: DISK_SIZE_VDA
+          dest: "{{ ansible_devices.vda.size | default('NONE') }}"
+        - src: DISK_SIZE_VDB
+          dest: "DISK_SIZE_VDB= {{ ansible_devices.vdb.size | default('NONE') }}"
